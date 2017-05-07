@@ -31,10 +31,8 @@ public class MainActivity extends AppCompatActivity {
         //setContentView(R.layout.activity_main);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-
-       //setupRxBinding();
-
-        setUpCommonObservable();
+       setupRxBinding();
+       //setUpCommonObservable();
     }
 
     private void setupRxBinding() {
@@ -56,8 +54,7 @@ public class MainActivity extends AppCompatActivity {
             .debounce(1000, TimeUnit.MILLISECONDS)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(getStringObserver());
-
+            .subscribe(observer);
 
         binding.editText.addTextChangedListener(new TextWatcher() {
             @Override
